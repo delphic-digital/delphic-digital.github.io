@@ -22,14 +22,14 @@
       <section>
         <h3>Tools</h3>
 
-<p>First things first, get the tools! Most 3rd part front end tools are based off of <a href="http://nodejs.org/">Node.js</a>. So: </p>
+<p>First things first, get the tools! Most 3rd party front end tools are based off of <a href="http://nodejs.org/">Node.js</a>. So: </p>
 <ul>
 <li>1. Install <a href="http://nodejs.org/">Node.js</a>!</li>
 </ul>
 <p>Once node is installed, we can install <a href="http://volojs.org/">Volo</a>.</p>
 <pre><code>npm install -g volo</code></pre>
 <p>It's a great way to manage JavaScript libraries and dependencies. It's <em>almost</em> perfect for our uses, and it's perfect after a couple changes.</p>
-<p>1. It doesn't allow you to run the <pre><code>create</create></pre> command in a directory that has code in it. This becomes a problem when us FED's get a new site to work on that already has a C# project set up. So lets make some small changes to Volo to fix this:</p>
+<p>1. It doesn't allow you to run the <code>create</code> command in a directory that has code in it. This becomes a problem when us FED's get a new site to work on that already has a C# project set up. So lets make some small changes to Volo to fix this:</p>
 <p>Comment out the else if starting on line 56 in <strong>C:\Users\<em>[your username]</em>\AppData\Roaming\npm\node_modules\volo\commands\create.js</strong>.</p>
 <pre><code>/*else if (file.exists(appName)) {
             return new Error(appName + ' already exists.');
