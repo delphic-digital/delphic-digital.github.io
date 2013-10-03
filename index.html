@@ -20,22 +20,29 @@
 
       </header>
       <section>
-        <h3>Tools</h3>
+        <h2>Tools</h2>
 
 <p>First things first, get the tools! Most 3rd party front end tools are based off of <a href="http://nodejs.org/">Node.js</a>. So: </p>
 <ul>
 <li>Install <a href="http://nodejs.org/">Node.js</a>!</li>
 </ul>
-<p>Once node is installed, we can install <a href="http://volojs.org/">Volo</a>. It's a great way to manage JavaScript libraries and dependencies. It's <em>almost</em> perfect for our uses, and it's perfect after a couple changes.</p>
-
-<pre><code>npm install -g volo</code></pre>
-<p>It doesn't allow you to run the <code>create</code> command in a directory that has code in it. This becomes a problem when us FED's get a new site to work on that already has a C# project set up. So lets make some small changes to Volo to fix this:</p>
-<p>Comment out the else if starting on line 56 in <strong>C:\Users\<em>[your username]</em>\AppData\Roaming\npm\node_modules\volo\commands\create.js</strong>.</p>
+<p>Once node is installed, we can install our build and development tools.</p>
+<pre><code>npm install -g volo uglifycss uglify-js</code></pre>
+<ul>
+  <li><a href="http://volojs.org/">Volo</a>. It's a great way to manage JavaScript libraries and dependencies. It's also used to build (minify and combine), our code. It's <em>almost</em> perfect for our uses, and it's perfect after a couple changes. See below.</p></li>
+  <li><a href="https://github.com/fmarcia/UglifyCSS">UglifyCSS</a>. Minify and Combine CSS.</li>
+  <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>. Minify and Combine JavaScript.</li>
+</ul>
+</section>
+<section>
+<h2>Volo Modifications</h2>
+<p>Volo doesn't allow you to run the <code>create</code> command in a directory that has code in it. This becomes a problem when us FED's get a new site to work on that already has a C# project set up. So lets make some small changes to Volo to fix this:</p>
+<p>Comment out the else if starting on line 56 in:<br> <strong>C:\Users\<em>[your username]</em>\AppData\Roaming\npm\node_modules\volo\commands\create.js</strong>.</p>
 <pre><code>/*else if (file.exists(appName)) {
             return new Error(appName + ' already exists.');
         }*/</code></pre>
 <p>The other problem is that volo is built for JavaScript, so it can't, say...automate where to put a css dependency. Let's change this:</p>
-<p>Comment out line 164 in <strong>C:\Users\<em>[your username]</em>\AppData\Roaming\npm\node_modules\volo\lib\packageJson.js</strong> and add  return path.dirname(this.file).</p>      
+<p>Comment out line 164 in:<br> <strong>C:\Users\<em>[your username]</em>\AppData\Roaming\npm\node_modules\volo\lib\packageJson.js</strong><br> and add  return path.dirname(this.file).</p>      
 <pre><code>//return baseDir;
         return path.dirname(this.file);</code></pre>
 <p>Modifications done!</p>
